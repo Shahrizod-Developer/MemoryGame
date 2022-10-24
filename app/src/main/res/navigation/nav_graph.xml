@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashScreen">
+
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="uz.gita.memorygame.presentation.ui.screen.fragment.splash.SplashScreen"
+        android:label="SplashScreen">
+        <action
+            android:id="@+id/action_splashScreen_to_menuScreen"
+            app:destination="@id/menuScreen"
+            app:popUpTo="@id/nav_graph" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuScreen"
+        android:name="uz.gita.memorygame.presentation.ui.screen.fragment.main.MenuScreen"
+        android:label="MenuScreen">
+        <action
+            android:id="@+id/action_menuScreen_to_miniLevelScreen"
+            app:destination="@id/miniLevelScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameScreen"
+        android:name="uz.gita.memorygame.presentation.ui.screen.fragment.game.GameScreen"
+        android:label="GameScreen">
+        <argument
+            android:name="game"
+            app:argType="uz.gita.memorygame.data.room.entity.GameEntity" />
+    </fragment>
+    <fragment
+        android:id="@+id/miniLevelScreen"
+        android:name="uz.gita.memorygame.presentation.ui.screen.fragment.game.MiniLevelScreen"
+        android:label="MiniLevelScreen">
+        <action
+            android:id="@+id/action_miniLevelScreen_to_gameScreen"
+            app:destination="@id/gameScreen"
+            app:popUpTo="@id/gameScreen"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="level"
+            android:defaultValue="4x4\neasy"
+            app:argType="string" />
+    </fragment>
+
+</navigation>
